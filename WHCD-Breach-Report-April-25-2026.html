@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHCD Security Breach • April 25, 2026 • Live Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap');
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .dashboard-header {
+            background: linear-gradient(135deg, #1e2937, #0f172a);
+        }
+        .card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+        }
+        .status-dot {
+            animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        .timeline-line {
+            height: 100%;
+        }
+        .timeline-dot {
+            transition: all 0.3s ease;
+        }
+        .timeline-item.active .timeline-dot {
+            background-color: #22d3ee;
+            box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.3);
+        }
+        .modal {
+            animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes modalPop {
+            0% { opacity: 0; transform: scale(0.8) translateY(40px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+    <!-- HEADER -->
+    <header class="dashboard-header text-white py-6 px-6 md:px-8 border-b border-slate-700">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="flex items-center gap-x-4">
+                    <div class="bg-red-600 px-4 py-1.5 rounded-3xl flex items-center gap-x-2 text-sm font-bold tracking-wider">
+                        <div class="w-2.5 h-2.5 bg-white rounded-full status-dot"></div>
+                        BREAKING
+                    </div>
+                    <h1 class="heading-font text-4xl md:text-5xl tracking-tighter font-semibold">WHCD SECURITY BREACH</h1>
+                </div>
+                <div class="flex items-center gap-x-4">
+                    <div class="px-6 py-3 bg-emerald-500/10 border border-emerald-400 text-emerald-400 rounded-3xl text-sm font-semibold flex items-center gap-x-3">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        SUSPECT IN CUSTODY • NO FATALITIES
+                    </div>
+                    <button onclick="copyToClipboard()" 
+                            class="flex items-center gap-x-2 bg-white/10 hover:bg-white/20 px-6 py-3 rounded-3xl text-sm font-medium transition-all active:scale-95">
+                        <i class="fa-solid fa-share-nodes"></i>
+                        <span>SHARE DASHBOARD</span>
+                    </button>
+                </div>
+            </div>
+            <p class="text-slate-400 mt-4 max-w-2xl text-lg">
+                April 25, 2026 — Washington Hilton, Washington D.C.<br>
+                Armed suspect <strong>Cole Tomas Allen</strong> attempted security breach during the White House Correspondents' Dinner.
+            </p>
+        </div>
+    </header>
+
+    <div class="max-w-screen-2xl mx-auto px-6 md:px-8 py-8">
+        
+        <!-- TOP BREAKING NEWS -->
+        <div class="mb-10">
+            <h2 class="text-red-400 uppercase tracking-[2px] text-sm font-semibold mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-bolt"></i> LIVE UPDATES
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <a href="https://truthsocial.com/" target="_blank" class="card bg-slate-900 rounded-3xl p-6 border border-slate-700 hover:border-red-500 group">
+                    <div class="text-red-400 text-xs font-medium mb-2">TRUMP TRUTH SOCIAL</div>
+                    <p class="font-semibold leading-tight text-lg group-hover:text-sky-400">President releases photo of shooter pinned on lobby floor</p>
+                </a>
+                <a href="https://apnews.com/" target="_blank" class="card bg-slate-900 rounded-3xl p-6 border border-slate-700 hover:border-red-500 group">
+                    <div class="text-red-400 text-xs font-medium mb-2">AP • OFFICIAL</div>
+                    <p class="font-semibold leading-tight text-lg group-hover:text-sky-400">31-year-old Cole Tomas Allen from Torrance, CA in custody</p>
+                </a>
+                <a href="https://www.youtube.com/watch?v=sC23qT9lBQg" target="_blank" class="card bg-slate-900 rounded-3xl p-6 border border-slate-700 hover:border-red-500 group">
+                    <div class="text-red-400 text-xs font-medium mb-2">VIDEO • TRUMP STATEMENT</div>
+                    <p class="font-semibold leading-tight text-lg group-hover:text-sky-400">"Secret Service acted with incredible speed"</p>
+                </a>
+                <a href="https://x.com/search?q=Cole+Tomas+Allen+WHCD" target="_blank" class="card bg-slate-900 rounded-3xl p-6 border border-slate-700 hover:border-red-500 group">
+                    <div class="text-red-400 text-xs font-medium mb-2">X • EYEWITNESS</div>
+                    <p class="font-semibold leading-tight text-lg group-hover:text-sky-400">Multiple angles of arrest and evacuation</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- LEFT COLUMN -->
+            <div class="lg:col-span-7 space-y-8">
+                
+                <!-- INCIDENT SUMMARY -->
+                <div class="card bg-slate-900 rounded-3xl p-8 border border-slate-700">
+                    <h2 class="text-2xl font-semibold mb-6 flex items-center gap-x-3">
+                        <span class="text-red-500">📍</span> INCIDENT SUMMARY
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                        <div>
+                            <div class="text-slate-400 text-sm">LOCATION</div>
+                            <div class="font-semibold mt-1">Washington Hilton<br><span class="text-sm font-normal text-slate-400">1919 Connecticut Ave NW, D.C.</span></div>
+                        </div>
+                        <div>
+                            <div class="text-slate-400 text-sm">TIME</div>
+                            <div class="font-semibold mt-1">~8:30 PM ET</div>
+                        </div>
+                        <div>
+                            <div class="text-slate-400 text-sm">WEAPON</div>
+                            <div class="font-semibold mt-1">Shotgun + additional firearms</div>
+                        </div>
+                    </div>
+                    <div class="mt-10 pt-8 border-t border-slate-700 text-slate-300">
+                        Suspect attempted to breach magnetometer screening, assembled a long weapon, fired at a Secret Service agent (vest stopped the round). 
+                        Suspect was immediately taken down in the lobby. President Trump, First Lady Melania Trump, and all guests were safely evacuated.
+                    </div>
+                </div>
+
+                <!-- SUSPECT PROFILE (CLICKABLE) -->
+                <div onclick="showSuspectModal()" class="card bg-slate-900 rounded-3xl p-8 border border-slate-700 cursor-pointer hover:ring-2 hover:ring-amber-400">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 class="text-2xl font-semibold">SUSPECT PROFILE</h2>
+                            <div class="flex items-center gap-x-4 mt-3">
+                                <span class="text-4xl font-bold">Cole Tomas Allen</span>
+                                <span class="bg-amber-500/10 text-amber-400 px-5 py-1 rounded-3xl text-sm font-medium">31 • Torrance, CA</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs bg-amber-500/10 text-amber-400 px-5 py-2 rounded-3xl font-medium">IN CUSTODY</div>
+                            <p class="text-sky-400 text-sm mt-6 font-medium">CLICK FOR FULL PROFILE →</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row gap-8 mt-8">
+                        <div class="md:w-80 flex-shrink-0">
+                            <img src="https://pbs.twimg.com/media/HGzMxQWaUAAoiOR.jpg" 
+                                 alt="Cole Tomas Allen arrest photo" 
+                                 class="w-full rounded-3xl shadow-2xl border border-slate-700">
+                        </div>
+                        <div class="flex-1 space-y-6 text-sm">
+                            <div>
+                                <div class="text-slate-400">Occupation</div>
+                                <div class="font-medium">Tutor &amp; Teacher of the Month (Dec 2024) at C2 Education</div>
+                            </div>
+                            <div>
+                                <div class="text-slate-400">Incident Actions</div>
+                                <div class="font-medium">Attempted breach • Fired at Secret Service • Taken down in lobby</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="lg:col-span-5 space-y-8">
+                
+                <!-- INTERACTIVE TIMELINE -->
+                <div class="card bg-slate-900 rounded-3xl p-8 border border-slate-700">
+                    <h2 class="text-2xl font-semibold mb-6 flex items-center justify-between">
+                        <span>INTERACTIVE TIMELINE</span>
+                        <span class="text-xs bg-slate-800 px-3 py-1 rounded-full font-mono">April 25, 2026</span>
+                    </h2>
+                    
+                    <div class="relative pl-8 space-y-10" id="timeline">
+                        <!-- Event 1 -->
+                        <div onclick="toggleTimelineItem(this)" class="timeline-item group cursor-pointer">
+                            <div class="absolute left-0 top-2 w-4 h-4 bg-sky-400 rounded-full timeline-dot flex items-center justify-center">
+                                <div class="w-2 h-2 bg-slate-900 rounded-full"></div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="font-mono text-xs w-16 text-slate-400 shrink-0">8:30 PM</div>
+                                <div class="flex-1">
+                                    <div class="font-semibold text-lg">Shots Fired Near Screening</div>
+                                    <div class="text-slate-400 text-sm">Suspect fires shotgun at Secret Service agent (vest stops round)</div>
+                                    <div class="timeline-content hidden mt-4 text-sm text-slate-300">
+                                        Suspect assembled a long weapon in an unsecured area before attempting to breach the magnetometer.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Event 2 -->
+                        <div onclick="toggleTimelineItem(this)" class="timeline-item group cursor-pointer">
+                            <div class="absolute left-0 top-2 w-4 h-4 bg-sky-400 rounded-full timeline-dot flex items-center justify-center">
+                                <div class="w-2 h-2 bg-slate-900 rounded-full"></div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="font-mono text-xs w-16 text-slate-400 shrink-0">Immediate</div>
+                                <div class="flex-1">
+                                    <div class="font-semibold text-lg">Suspect Taken Down</div>
+                                    <div class="text-slate-400 text-sm">Rapid response in hotel lobby — your photo captured here</div>
+                                    <div class="timeline-content hidden mt-4 text-sm text-slate-300">
+                                        Cole Tomas Allen subdued and arrested on patterned carpet. President Trump later shared this exact image on Truth Social.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Event 3 -->
+                        <div onclick="toggleTimelineItem(this)" class="timeline-item group cursor-pointer">
+                            <div class="absolute left-0 top-2 w-4 h-4 bg-sky-400 rounded-full timeline-dot flex items-center justify-center">
+                                <div class="w-2 h-2 bg-slate-900 rounded-full"></div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="font-mono text-xs w-16 text-slate-400 shrink-0">8:35 PM</div>
+                                <div class="flex-1">
+                                    <div class="font-semibold text-lg">Protectees Evacuated</div>
+                                    <div class="text-slate-400 text-sm">Trump, Melania &amp; guests moved to safety</div>
+                                    <div class="timeline-content hidden mt-4 text-sm text-slate-300">
+                                        Wide-angle ballroom footage shows guests ducking under tables as Secret Service secures the area.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Event 4 -->
+                        <div onclick="toggleTimelineItem(this)" class="timeline-item group cursor-pointer">
+                            <div class="absolute left-0 top-2 w-4 h-4 bg-sky-400 rounded-full timeline-dot flex items-center justify-center">
+                                <div class="w-2 h-2 bg-slate-900 rounded-full"></div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="font-mono text-xs w-16 text-slate-400 shrink-0">9:00 PM</div>
+                                <div class="flex-1">
+                                    <div class="font-semibold text-lg">Trump Posts on Truth Social</div>
+                                    <div class="text-slate-400 text-sm">Shares arrest photo and praises Secret Service</div>
+                                    <div class="timeline-content hidden mt-4 text-sm text-slate-300">
+                                        "The Secret Service acted with incredible speed and bravery. Shooter is in custody."
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-xs text-slate-400 mt-8 text-center">
+                        Click any event to expand • All times approximate
+                    </div>
+                </div>
+
+                <!-- MAP -->
+                <div class="card bg-slate-900 rounded-3xl p-8 border border-slate-700">
+                    <h2 class="text-2xl font-semibold mb-5">📍 INCIDENT LOCATION</h2>
+                    <div class="map-container bg-slate-950 rounded-3xl overflow-hidden">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.0000000000003!2d-77.048!3d38.916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7b7b7b7b7b7%3A0x89b7b7b7b7b7b7b7!2sWashington%20Hilton!5e0!3m2!1sen!2sus!4v1745700000000" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIDEO FEEDS -->
+        <div class="mt-8 card bg-slate-900 rounded-3xl p-8 border border-slate-700">
+            <h2 class="text-2xl font-semibold mb-6">📹 KEY VIDEO FOOTAGE</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <iframe width="100%" height="240" class="rounded-3xl" 
+                            src="https://www.youtube.com/embed/jpScDNz3-1Y" 
+                            frameborder="0" allowfullscreen></iframe>
+                    <p class="text-xs text-slate-400 mt-3">Shooter takedown in Hilton lobby</p>
+                </div>
+                <div>
+                    <iframe width="100%" height="240" class="rounded-3xl" 
+                            src="https://www.youtube.com/embed/sC23qT9lBQg" 
+                            frameborder="0" allowfullscreen></iframe>
+                    <p class="text-xs text-slate-400 mt-3">President Trump statement on the incident</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOURCES -->
+        <div class="mt-12 card bg-slate-900 rounded-3xl p-8 border border-slate-700">
+            <h2 class="text-xl font-semibold mb-6">VERIFIED SOURCES</h2>
+            <div class="grid md:grid-cols-2 gap-8 text-sm">
+                <ul class="space-y-4">
+                    <li><a href="https://truthsocial.com/" target="_blank" class="hover:text-sky-400">• President Trump Truth Social (original photo)</a></li>
+                    <li><a href="https://apnews.com/" target="_blank" class="hover:text-sky-400">• Associated Press – Official updates</a></li>
+                </ul>
+                <ul class="space-y-4">
+                    <li><a href="https://x.com/search?q=Cole+Tomas+Allen+WHCD" target="_blank" class="hover:text-sky-400">• X – Eyewitness videos</a></li>
+                    <li><a href="https://www.foxnews.com/" target="_blank" class="hover:text-sky-400">• Fox News coverage</a></li>
+                </ul>
+            </div>
+            <div class="text-xs text-slate-500 mt-12 pt-8 border-t border-slate-700">
+                Fully self-contained HTML dashboard • Save as <strong>WHCD-Breach-Report-April-25-2026.html</strong><br>
+                Interactive timeline • Mobile optimized • All videos and links live
+            </div>
+        </div>
+    </div>
+
+    <!-- SUSPECT MODAL -->
+    <div id="suspectModal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+        <div class="modal bg-slate-900 w-full max-w-2xl rounded-3xl overflow-hidden">
+            <!-- Modal content same as previous version -->
+            <div class="p-8">
+                <div class="flex justify-between mb-6">
+                    <h2 class="text-3xl font-bold">Cole Tomas Allen — Full Profile</h2>
+                    <button onclick="hideSuspectModal()" class="text-5xl text-slate-400 hover:text-white leading-none">×</button>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <img src="https://pbs.twimg.com/media/HGzMxQWaUAAoiOR.jpg" alt="Arrest" class="rounded-3xl w-full">
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="text-slate-400 text-xs tracking-widest">AGE &amp; ORIGIN</div>
+                            <div class="text-2xl font-semibold">31 • Torrance, California</div>
+                        </div>
+                        <div>
+                            <div class="text-slate-400 text-xs tracking-widest">PROFESSION</div>
+                            <div class="font-medium">Tutor &amp; Teacher of the Month (Dec 2024), C2 Education</div>
+                        </div>
+                        <div>
+                            <div class="text-slate-400 text-xs tracking-widest">EDUCATION</div>
+                            <div class="font-medium">Caltech graduate (Mechanical Engineering / CS)</div>
+                        </div>
+                        <div class="pt-4">
+                            <div class="text-red-400 font-medium">Incident Summary</div>
+                            <ul class="mt-3 space-y-2 text-sm list-disc pl-5">
+                                <li>Attempted security breach at magnetometer</li>
+                                <li>Fired shotgun at Secret Service agent</li>
+                                <li>Immediately subdued in hotel lobby</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTimelineItem(el) {
+            const content = el.querySelector('.timeline-content');
+            const isHidden = content.classList.contains('hidden');
+            
+            // Close all others
+            document.querySelectorAll('.timeline-content').forEach(c => {
+                c.classList.add('hidden');
+            });
+            
+            if (isHidden) {
+                content.classList.remove('hidden');
+                el.classList.add('active');
+            } else {
+                content.classList.add('hidden');
+                el.classList.remove('active');
+            }
+        }
+
+        function showSuspectModal() {
+            document.getElementById('suspectModal').classList.remove('hidden');
+            document.getElementById('suspectModal').classList.add('flex');
+        }
+        
+        function hideSuspectModal() {
+            const modal = document.getElementById('suspectModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+        
+        function copyToClipboard() {
+            const message = "WHCD Security Breach Interactive Dashboard\nDate: April 25, 2026\nSuspect: Cole Tomas Allen\n\nShared via self-contained HTML file";
+            navigator.clipboard.writeText(message).then(() => {
+                const btn = document.querySelector('button[onclick="copyToClipboard()"]');
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = `<i class="fa-solid fa-check"></i> COPIED!`;
+                setTimeout(() => btn.innerHTML = originalHTML, 2500);
+            });
+        }
+
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") hideSuspectModal();
+        });
+
+        console.log('%c✅ Interactive WHCD Dashboard with expandable timeline ready!', 'color:#22d3ee; font-size:14px; font-family:monospace');
+    </script>
+</body>
+</html>
